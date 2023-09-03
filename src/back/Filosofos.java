@@ -8,7 +8,7 @@ package back;
  *
  * @author PC
  */
-public class Filosofos {
+public class Filosofos extends Thread{
     boolean comiendo;
     int tiempoEspera;
     Planificador buffer;

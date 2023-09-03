@@ -9,5 +9,8 @@ package back;
  * @author PC
  */
 public class Palillos {
+    boolean libre;
+    int posicion;
+    
     
 }

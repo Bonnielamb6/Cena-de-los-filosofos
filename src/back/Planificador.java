@@ -9,5 +9,6 @@ package back;
  * @author PC
  */
 public class Planificador {
+    Palillos mesa [] = new Palillos [5];
     
 }
