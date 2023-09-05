@@ -12,5 +12,26 @@ public class Palillos {
     boolean libre;
     int posicion;
     
+    public Palillos(int p){
+        libre = true;
+        posicion = p;
+    }
+
+    public boolean isLibre() {
+        return libre;
+    }
+
+    public int getPosicion() {
+        return posicion;
+    }
+
+    public void setLibre(boolean libre) {
+        this.libre = libre;
+    }
+
+    public void setPosicion(int posicion) {
+        this.posicion = posicion;
+    }
+    
     
 }
