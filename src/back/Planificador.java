@@ -48,13 +48,15 @@ public class Planificador {
         if(opcion == 2){
             tomarDerecha(i);
             tomarIzquierda(i--);
+            comensales[i].empezarComer();
+            
         }else if(opcion == 1){
             tomarDerecha(i);
         }else if (opcion == -1){
             tomarIzquierda(i--);
         }
         
-        
+        comensales[i].terminarComer();
         notifyAll();
     }
     
@@ -87,8 +89,5 @@ public class Planificador {
         }else{
             return 0;
         }
-    }
-    public void tamanioMesa(){
-        
     }
 }

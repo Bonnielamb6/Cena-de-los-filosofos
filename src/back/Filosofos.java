@@ -32,17 +32,11 @@ public class Filosofos extends Thread{
         
         while (true){
             try{
-                
-                if(buffer.getCantidadProductos()==0){
-                    dormir();
-                }else{
-                    despertar();
+                if(!comiendo){
+                    buffer.filosofosLibres(); // o comer, no se cual xd
+                    System.out.println("Filosofo "+posicion +"comiendo");
                 }
-                if(despierto){
-                    buffer.consumir();
-                    System.out.println("Consumio");
-                }
-                sleep(10000);
+                sleep(tiempoEspera);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Filosofos.class.getName()).log(Level.SEVERE, null, ex);
             }
