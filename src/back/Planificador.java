@@ -13,55 +13,60 @@ import java.util.logging.Logger;
  */
 public class Planificador {
     Palillos mesa [] = new Palillos [5];
-    Filosofos comensales[] = new Filosofos[5];
     
     
-    public Planificador (int t1,int t2, int t3, int t4, int t5){
+    
+    public Planificador (int numPalillos){
         for(int i = 0;i< 5;i++){
             mesa[i] = new Palillos(i);
         }
-        comensales[0] = new Filosofos(this, 1, t1);
-        comensales[1] = new Filosofos(this, 2, t2);
-        comensales[2] = new Filosofos(this, 3, t3);
-        comensales[3] = new Filosofos(this, 4, t4);
-        comensales[4] = new Filosofos(this, 5, t5);
+        
     }
             
-    public void filosofosLibres(){//conseguir los filosofo que tienen palillos libres a los lados para empezar a comer
-        while(true){
-            for(int i = 0;i < comensales.length;i++){
-                comer(i);
+    
+    public synchronized void tomarPalillos(int comensal){
+        while(getPalillos(comensal, comensal) == 0){
+            try {
+                wait();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Planificador.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }
-    
-    public synchronized void comer(int i){
         
-        try {
-            wait();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Planificador.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        tomarDerecha(comensal);
+        tomarIzquierda(comensal);
         
+        /*esto es por si acabo antes para hacerlo que pueda agarrar un palillo y despues el otro
         //determinar que palillos puede agarrar, regresa 2 si puede agarrar ambos, 1 solo el de la derecha,
-        int opcion = getPalillos(i--,i);//-1 solo el de la izquierda, 0 ninguno(ambos estan tomados)
+        int opcion = getPalillos(comensal--,comensal);//-1 solo el de la izquierda, 0 ninguno(ambos estan tomados)
         if(opcion == 2){
-            tomarDerecha(i);
-            tomarIzquierda(i--);
-            comensales[i].empezarComer();
+            tomarDerecha(comensal);
+            tomarIzquierda(comensal--);
+            comensales[comensal].empezarComer();
             
         }else if(opcion == 1){
-            tomarDerecha(i);
+            tomarDerecha(comensal);
         }else if (opcion == -1){
-            tomarIzquierda(i--);
+            tomarIzquierda(comensal--);
         }
+        */
         
-        comensales[i].terminarComer();
+        
+    }
+    
+    public synchronized void dejarPalillos(int comensal){
+        soltarDerecha(comensal);
+        soltarIzquierda(comensal);
         notifyAll();
     }
     
     public void tomarIzquierda(int p){//que un filosofo tome su palillo de la izquierda
-        mesa[p].setLibre(false);
+        if(p == 0){
+            mesa[mesa.length-1].setLibre(false);
+        }else{
+            mesa[p-1].setLibre(false);
+        }
+        
     }
     
     public void tomarDerecha(int p){//que un filosofo tome su palillo de la derecha
@@ -73,21 +78,47 @@ public class Planificador {
     }
     
     public void soltarIzquierda(int p){
-        mesa[p].setLibre(true);
+        if(p == 0){
+            mesa[mesa.length-1].setLibre(true);
+        }else{
+            mesa[p-1].setLibre(true);
+        }
     }
     
     public int getPalillos(int izq, int der){
-        if(izq <0){
+        if(izq == 0){
             izq = mesa.length-1;
+        }else {
+            izq = izq -1;
         }
-        if(mesa[izq].isLibre() && mesa[der].isLibre()){
-            return 2;
-        }else if(mesa[izq].isLibre()){
-            return -1;
-        }else if (mesa[der].isLibre()){
+        if(mesa[izq].isLibre() && mesa [der].isLibre()){
             return 1;
         }else{
             return 0;
         }
+        /*
+        if(mesa[izq].isLibre() && mesa[der].isLibre()){         //ambos estan libres
+            return 2;
+        }else if(mesa[izq].isLibre()){              //solo esta libre el izquierdo    
+            return -1;
+        }else if (mesa[der].isLibre()){             //solo esta libre el derecho
+            return 1;
+        }else{                                      //ninguno esta libre
+            return 0;
+        }
+        */
+    }
+    
+    public int getIzquierdo(int i){
+        if(i == 0){
+            return mesa.length -1;
+        }else{
+            return i -1;
+        }
+        
+    }
+    
+    public int getDerecho(int i){
+        return i;
     }
 }

@@ -14,16 +14,14 @@ import java.util.logging.Logger;
  */
 public class Filosofos extends Thread{
     boolean comiendo;
-    int tiempoEspera;
     int posicion;
     Planificador buffer;
     
     
-    public Filosofos(Planificador b, int x, int t){
+    public Filosofos(Planificador b, int x){
         comiendo = false;
         buffer = b;
         posicion = x;
-        tiempoEspera = t;
         
     }
 
@@ -31,6 +29,13 @@ public class Filosofos extends Thread{
     public void run() {
         
         while (true){
+            pensar();
+            buffer.tomarPalillos(posicion);
+            empezarComer();
+            System.out.println("Filosofo " + posicion + " deja palillos: "+buffer.getIzquierdo(posicion) + " y "+buffer.getDerecho(posicion));
+            buffer.dejarPalillos(posicion);
+            pensar();
+            /*
             try{
                 if(!comiendo){
                     buffer.filosofosLibres(); // o comer, no se cual xd
@@ -40,6 +45,7 @@ public class Filosofos extends Thread{
             } catch (InterruptedException ex) {
                 Logger.getLogger(Filosofos.class.getName()).log(Level.SEVERE, null, ex);
             }
+            */
         }
     }
     
@@ -47,9 +53,24 @@ public class Filosofos extends Thread{
     
     public void empezarComer(){
         comiendo = true;
+        System.out.println("Filosofo "+ posicion + " comiendo");
+        try {
+            sleep((long) (Math.random() * 15000));
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Filosofos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void terminarComer(){
         comiendo = false;
+    }
+    
+    public void pensar(){
+        System.out.println("Filosofo "+posicion + " pensando");
+        try {
+            sleep((long) (Math.random() * 4000));
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Filosofos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
