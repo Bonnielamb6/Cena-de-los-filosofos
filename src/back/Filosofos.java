@@ -34,6 +34,7 @@ public class Filosofos extends Thread{
             empezarComer();
             System.out.println("Filosofo " + posicion + " deja palillos: "+buffer.getIzquierdo(posicion) + " y "+buffer.getDerecho(posicion));
             buffer.dejarPalillos(posicion);
+            terminarComer();
             pensar();
             /*
             try{
@@ -72,5 +73,8 @@ public class Filosofos extends Thread{
         } catch (InterruptedException ex) {
             Logger.getLogger(Filosofos.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    public boolean getEstado(){
+        return comiendo;
     }
 }
