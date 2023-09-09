@@ -121,4 +121,8 @@ public class Planificador {
     public int getDerecho(int i){
         return i;
     }
+    
+    public boolean getEstadoPalillo(int i){
+        return mesa[i].isLibre();
+    }
 }

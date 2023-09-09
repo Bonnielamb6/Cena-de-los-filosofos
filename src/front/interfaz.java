@@ -6,6 +6,7 @@ package front;
 import back.Planificador;
 import back.Filosofos;
 import back.Palillos;
+import java.awt.Color;
 import java.util.Stack;
 import javax.swing.ImageIcon;
 /**
@@ -43,6 +44,11 @@ public class interfaz extends javax.swing.JFrame {
         filosofo2 = new javax.swing.JLabel();
         filosofo3 = new javax.swing.JLabel();
         filosofo4 = new javax.swing.JLabel();
+        palillo0 = new javax.swing.JButton();
+        palillo1 = new javax.swing.JButton();
+        palillo2 = new javax.swing.JButton();
+        palillo3 = new javax.swing.JButton();
+        palillo4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -75,6 +81,21 @@ public class interfaz extends javax.swing.JFrame {
         filosofo4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/miku pensando.PNG"))); // NOI18N
         getContentPane().add(filosofo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 80, 70));
 
+        palillo0.setBackground(new java.awt.Color(0, 153, 51));
+        getContentPane().add(palillo0, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 440, 30, 20));
+
+        palillo1.setBackground(new java.awt.Color(0, 153, 51));
+        getContentPane().add(palillo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 30, 20));
+
+        palillo2.setBackground(new java.awt.Color(0, 153, 51));
+        getContentPane().add(palillo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 30, 20));
+
+        palillo3.setBackground(new java.awt.Color(0, 153, 51));
+        getContentPane().add(palillo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 30, 20));
+
+        palillo4.setBackground(new java.awt.Color(0, 153, 51));
+        getContentPane().add(palillo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 420, 30, 20));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -92,6 +113,31 @@ public class interfaz extends javax.swing.JFrame {
         Thread ventana = new Thread(()->{
             while(!Thread.currentThread().isInterrupted()){
                 
+                if(programa.getEstadoPalillo(0)){
+                    palillo0.setBackground(Color.green);
+                }else{
+                    palillo0.setBackground(Color.red);
+                }
+                if(programa.getEstadoPalillo(1)){
+                    palillo1.setBackground(Color.green);
+                }else{
+                    palillo1.setBackground(Color.red);
+                }
+                if(programa.getEstadoPalillo(2)){
+                    palillo2.setBackground(Color.green);
+                }else{
+                    palillo2.setBackground(Color.red);
+                }
+                if(programa.getEstadoPalillo(3)){
+                    palillo3.setBackground(Color.green);
+                }else{
+                    palillo3.setBackground(Color.red);
+                }
+                if(programa.getEstadoPalillo(4)){
+                    palillo4.setBackground(Color.green);
+                }else{
+                    palillo4.setBackground(Color.red);
+                }
                 
                 if(comensales[0].getEstado() == true){
                     icono = new ImageIcon(getClass().getResource("/img/miku comiendo.PNG"));   
@@ -181,5 +227,10 @@ public class interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel filosofo3;
     private javax.swing.JLabel filosofo4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton palillo0;
+    private javax.swing.JButton palillo1;
+    private javax.swing.JButton palillo2;
+    private javax.swing.JButton palillo3;
+    private javax.swing.JButton palillo4;
     // End of variables declaration//GEN-END:variables
 }
