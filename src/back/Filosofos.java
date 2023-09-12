@@ -16,13 +16,13 @@ public class Filosofos extends Thread{
     boolean comiendo;
     int posicion;
     Planificador buffer;
-    
+    boolean corriendo;
     
     public Filosofos(Planificador b, int x){
         comiendo = false;
         buffer = b;
         posicion = x;
-        
+        corriendo = false;
     }
 
     @Override
@@ -76,5 +76,16 @@ public class Filosofos extends Thread{
     }
     public boolean getEstado(){
         return comiendo;
+    }
+    
+    public void detener(){
+        corriendo = false;
+    }
+    
+    public void iniciar(){
+        corriendo = true;
+    }
+    public boolean isCorriendo(){
+        return corriendo;
     }
 }

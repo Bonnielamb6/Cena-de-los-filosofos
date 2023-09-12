@@ -9,6 +9,7 @@ import back.Palillos;
 import java.awt.Color;
 import java.util.Stack;
 import javax.swing.ImageIcon;
+import java.applet.AudioClip;
 /**
  *
  * @author User
@@ -19,13 +20,18 @@ public class interfaz extends javax.swing.JFrame {
     Planificador programa = new Planificador (5);
     Filosofos []comensales;
     ImageIcon icono;
+    AudioClip cancion;
     /**
      * Creates new form interfaz
      */
     public interfaz() {
         initComponents();
         comensales = new Filosofos [5];
-        
+        cancion = java.applet.Applet.newAudioClip(getClass().getResource("/sonidos/2-14-Red-Velvet.wav"));
+        for (int i = 0;i<5;i++){
+                Filosofos temp = new Filosofos(programa,i);
+                comensales[i] = temp;
+            }
     }
 
     /**
@@ -101,12 +107,29 @@ public class interfaz extends javax.swing.JFrame {
 
     private void btnEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpezarActionPerformed
         // TODO add your handling code here:
-        for (int i = 0;i<5;i++){
-            Filosofos temp = new Filosofos(programa,i);
-            temp.start();
-            comensales[i] = temp;
+        if(!comensales[0].isAlive()){
+            for (int i = 0;i<5;i++){
+                comensales[i].start();
+                comensales[i].iniciar();
+                
+            }
+            cancion.loop();
+        }else if(comensales[0].isCorriendo()){
+            for(int i = 0;i<5;i++){
+                comensales[i].suspend();
+                comensales[i].detener();
+            }
+            cancion.stop();
+        }else{
+            for(int i = 0;i<5;i++){
+                comensales[i].resume();
+                comensales[i].iniciar();
+            }
+            cancion.loop();
         }
+        
         actualizarUI();
+        
     }//GEN-LAST:event_btnEmpezarActionPerformed
 
     public void actualizarUI(){
