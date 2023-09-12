@@ -48,7 +48,7 @@ public class interfaz extends javax.swing.JFrame {
         filosofo2.setSize(dimension);
         filosofo3.setSize(dimension);
         filosofo4.setSize(dimension);
-        
+        txtAreaEstados.setEditable(false);
     }
 
     /**
@@ -73,13 +73,15 @@ public class interfaz extends javax.swing.JFrame {
         palillo3 = new javax.swing.JButton();
         palillo4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAreaEstados = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Cena de los filosofos");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(283, 22, 238, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 238, -1));
 
         btnEmpezar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnEmpezar.setText("Empezar");
@@ -88,55 +90,61 @@ public class interfaz extends javax.swing.JFrame {
                 btnEmpezarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEmpezar, new org.netbeans.lib.awtextra.AbsoluteConstraints(673, 529, 110, 44));
+        getContentPane().add(btnEmpezar, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 630, 110, 44));
 
         filosofo0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/miku pensando.PNG"))); // NOI18N
-        getContentPane().add(filosofo0, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 520, 120, 100));
+        getContentPane().add(filosofo0, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 550, 120, 100));
 
         filosofo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/miku pensando.PNG"))); // NOI18N
-        getContentPane().add(filosofo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 120, 100));
+        getContentPane().add(filosofo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, 120, 100));
 
         filosofo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/miku pensando.PNG"))); // NOI18N
-        getContentPane().add(filosofo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 120, 100));
+        getContentPane().add(filosofo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, 120, 100));
 
         filosofo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/miku pensando.PNG"))); // NOI18N
-        getContentPane().add(filosofo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 120, 100));
+        getContentPane().add(filosofo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, 120, 100));
 
         filosofo4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/miku pensando.PNG"))); // NOI18N
-        getContentPane().add(filosofo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 120, 100));
+        getContentPane().add(filosofo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 120, 100));
 
         palillo0.setBackground(new java.awt.Color(0, 153, 51));
         palillo0.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         palillo0.setForeground(new java.awt.Color(0, 0, 0));
         palillo0.setText("/");
-        getContentPane().add(palillo0, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, 60, 40));
+        getContentPane().add(palillo0, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 480, 60, 40));
 
         palillo1.setBackground(new java.awt.Color(0, 153, 51));
         palillo1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         palillo1.setForeground(new java.awt.Color(0, 0, 0));
         palillo1.setText("/");
-        getContentPane().add(palillo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, 60, 40));
+        getContentPane().add(palillo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 320, 60, 40));
 
         palillo2.setBackground(new java.awt.Color(0, 153, 51));
         palillo2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         palillo2.setForeground(new java.awt.Color(0, 0, 0));
         palillo2.setText("/");
-        getContentPane().add(palillo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 70, 40));
+        getContentPane().add(palillo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 70, 40));
 
         palillo3.setBackground(new java.awt.Color(0, 153, 51));
         palillo3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         palillo3.setForeground(new java.awt.Color(0, 0, 0));
         palillo3.setText("/");
-        getContentPane().add(palillo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 70, 40));
+        getContentPane().add(palillo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 70, 40));
 
         palillo4.setBackground(new java.awt.Color(0, 153, 51));
         palillo4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         palillo4.setForeground(new java.awt.Color(0, 0, 0));
         palillo4.setText("/");
-        getContentPane().add(palillo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 430, 60, 40));
+        getContentPane().add(palillo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 460, 60, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mesa.PNG"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, -1, -1));
+
+        txtAreaEstados.setColumns(20);
+        txtAreaEstados.setRows(5);
+        jScrollPane1.setViewportView(txtAreaEstados);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 270, 230));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -172,6 +180,7 @@ public class interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmpezarActionPerformed
 
     public void actualizarUI(){
+        
         Thread ventana = new Thread(()->{
             while(!Thread.currentThread().isInterrupted()){
                 
@@ -200,40 +209,98 @@ public class interfaz extends javax.swing.JFrame {
                 }else{
                     palillo4.setBackground(Color.red);
                 }
-                
+              
                 if(comensales[0].getEstado() == true){
                     filosofo0.setIcon(imagen.redimensionarImagen("miku comiendo.png", dimension));
+               
                 }else{
                     filosofo0.setIcon(imagen.redimensionarImagen("miku pensando.png", dimension));
+                 
                 }
                 
                 if(comensales[1].getEstado() == true){
                     filosofo1.setIcon(imagen.redimensionarImagen("miku comiendo.png", dimension));
+                 
                 }else{
                     filosofo1.setIcon(imagen.redimensionarImagen("miku pensando.png", dimension));
+                
                 }
                 
                 if(comensales[2].getEstado() == true){
                     filosofo2.setIcon(imagen.redimensionarImagen("miku comiendo.png", dimension));
+               
                 }else{
                     filosofo2.setIcon(imagen.redimensionarImagen("miku pensando.png", dimension));
+              
                 }
                 
                 if(comensales[3].getEstado() == true){
                     filosofo3.setIcon(imagen.redimensionarImagen("miku comiendo.png", dimension));
+                  
                 }else{
                     filosofo3.setIcon(imagen.redimensionarImagen("miku pensando.png", dimension));
+          
                 }
                 
                 if(comensales[4].getEstado() == true){
                     filosofo4.setIcon(imagen.redimensionarImagen("miku comiendo.png", dimension));
+                    
                 }else{
                     filosofo4.setIcon(imagen.redimensionarImagen("miku pensando.png", dimension));
+                    
                 }
                 
+                actualizarTexto();
             }
+            
         });
         ventana.start();
+    }
+    
+    public void actualizarTexto(){
+        String texto="";
+        texto+="Filosofo 1: ";
+                if(comensales[0].getEstado() == true){
+                    
+                    texto += "*****comiendo****";
+                }else{
+                    
+                    texto+="pensando";
+                }
+                texto+="\n\nFilosofo 2: ";
+                if(comensales[1].getEstado() == true){
+                    
+                    texto += "*****comiendo****";
+                }else{
+                    
+                    texto+="pensando";
+                }
+                texto+="\n\nFilosofo 3: ";
+                if(comensales[2].getEstado() == true){
+                    
+                    texto += "*****comiendo****";
+                }else{
+                    
+                    texto+="pensando";
+                }
+                texto+="\n\nFilosofo 4: ";
+                if(comensales[3].getEstado() == true){
+                    
+                    texto += "*****comiendo****";
+                }else{
+                    
+                    texto+="pensando";
+                }
+                texto+="\n\nFilosofo 5: ";
+                if(comensales[4].getEstado() == true){
+                    
+                    texto += "*****comiendo****";
+                }else{
+                    
+                    texto+="pensando";
+                }
+        texto+="\n";
+        txtAreaEstados.setText(""+texto);
     }
     
     /**
@@ -280,10 +347,12 @@ public class interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel filosofo4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton palillo0;
     private javax.swing.JButton palillo1;
     private javax.swing.JButton palillo2;
     private javax.swing.JButton palillo3;
     private javax.swing.JButton palillo4;
+    private javax.swing.JTextArea txtAreaEstados;
     // End of variables declaration//GEN-END:variables
 }
